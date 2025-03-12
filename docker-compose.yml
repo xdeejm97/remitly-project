@@ -2,6 +2,19 @@ name: remitly-project
 
 services:
 
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: damian/remitly-project:latest
+    depends_on:
+      - postgresql
+    environment:
+      SERVER_PORT: 8080
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/remitly
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: secret
+
   postgresql:
     image: postgres:16
     environment:
@@ -11,3 +24,5 @@ services:
       SERVER_PORT: 5432
     ports:
       - "5432:5432"
+
+

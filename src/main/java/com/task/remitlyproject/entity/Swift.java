@@ -6,6 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+/**
+ * SWIFT entity class.
+ */
 @Entity
 @Table(name = "swift_codes")
 @AllArgsConstructor
@@ -16,5 +20,6 @@ public class Swift {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private Long id;
+
 }
