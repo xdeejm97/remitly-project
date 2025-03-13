@@ -1,10 +1,7 @@
 package com.task.remitlyproject.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 /**
  * SWIFT entity class.
@@ -15,7 +12,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class SwiftCodes {
+@Builder
+public class SwiftCode {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
