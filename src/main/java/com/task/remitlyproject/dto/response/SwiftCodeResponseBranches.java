@@ -6,16 +6,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 
 /**
- * Response with a Swift code headquarter.
+ * Response with a Swift code branch.
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SwiftCodeResponse {
+public class SwiftCodeResponseBranches {
 
   private String address;
   private String bankName;
@@ -24,6 +23,5 @@ public class SwiftCodeResponse {
   @JsonProperty("isHeadquarter")
   private boolean isHeadquarter;
   private String swiftCode;
-  private List<SwiftCodeResponseBranches> branches;
 
 }
