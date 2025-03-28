@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SwiftCodeResponseDetails {
+public class SwiftCodeResponseByCountryDetails {
 
   private String address;
   private String bankName;

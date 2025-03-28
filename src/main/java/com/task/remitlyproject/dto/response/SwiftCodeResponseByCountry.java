@@ -19,6 +19,6 @@ public class SwiftCodeResponseByCountry {
 
   private String countryISO2;
   private String countryName;
-  private List<SwiftCodeResponseDetails> swiftCodes;
+  private List<SwiftCodeResponseByCountryDetails> swiftCodes;
 
 }

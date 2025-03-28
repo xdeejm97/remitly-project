@@ -5,7 +5,7 @@ import com.task.remitlyproject.dto.request.SwiftCodeRequest;
 import com.task.remitlyproject.dto.response.SwiftCodeResponse;
 import com.task.remitlyproject.dto.response.SwiftCodeResponseBranches;
 import com.task.remitlyproject.dto.response.SwiftCodeResponseByCountry;
-import com.task.remitlyproject.dto.response.SwiftCodeResponseDetails;
+import com.task.remitlyproject.dto.response.SwiftCodeResponseByCountryDetails;
 import com.task.remitlyproject.entity.SwiftCode;
 import com.task.remitlyproject.exception.SwiftCodeAlreadyExistsException;
 import com.task.remitlyproject.repository.SwiftCodeRepository;
@@ -67,13 +67,13 @@ public class SwiftCodeService {
    */
   public SwiftCodeResponseByCountry getAllSwiftCodesByCountry(String countryISO2) {
     List<SwiftCode> byCountryISO2 = swiftCodeRepository.findByCountryISO2(countryISO2.toUpperCase(Locale.ROOT));
-    List<SwiftCodeResponseDetails> swiftCodeResponseDetails = getSwiftCodeResponseDetails(byCountryISO2);
+    List<SwiftCodeResponseByCountryDetails> swiftCodeResponseByCountryDetails = getSwiftCodeResponseDetails(byCountryISO2);
 
     return SwiftCodeResponseByCountry
             .builder()
             .countryISO2(countryISO2.toUpperCase(Locale.ROOT))
             .countryName(byCountryISO2.get(0).getCountryName())
-            .swiftCodes(swiftCodeResponseDetails)
+            .swiftCodes(swiftCodeResponseByCountryDetails)
             .build();
   }
 
@@ -240,9 +240,9 @@ public class SwiftCodeService {
    * @param byCountryISO2 List of SwiftCode entities from a specific country
    * @return List of SwiftCodeResponseDetails representing Swift codes in the country
    */
-  private List<SwiftCodeResponseDetails> getSwiftCodeResponseDetails(List<SwiftCode> byCountryISO2) {
+  private List<SwiftCodeResponseByCountryDetails> getSwiftCodeResponseDetails(List<SwiftCode> byCountryISO2) {
     return byCountryISO2.stream()
-            .map(branch -> SwiftCodeResponseDetails
+            .map(branch -> SwiftCodeResponseByCountryDetails
                     .builder()
                     .address(branch.getAddress())
                     .bankName(branch.getBankName())
